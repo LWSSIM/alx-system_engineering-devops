@@ -16,5 +16,5 @@
 </ul>
 
 <h2>Writing scripts</h2>
-<p>This part will tackle the use of scripts!(All tasks will be according to this) <em>NOTE</em>That the use of git/github is mandatory.</p>
+<p>This part will tackle the use of scripts!(All tasks will be according to this) <em>NOTE</em> That the use of git/github is mandatory.</p>
 
