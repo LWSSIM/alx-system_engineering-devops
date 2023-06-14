@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -n '^' | grep -E '^[[:digit:]]*[02468]:|^10:' | cut -d: -f2
+paste -d, - - | cut -d, -f1
