@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -n ' ' | grep =E ":([02468]|10)$" | cut -d: -f2 | paste -d'\n'
