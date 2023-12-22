@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Bash script that displays a list of currently 'Bash' running processes by user.
+# shellcheck disable=SC2009
+
+ps u --forest | grep 'bash'
