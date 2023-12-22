@@ -6,11 +6,12 @@ counter=0
 # While loop to display "Best School" until the counter reaches 10
 while [ $counter -lt 10 ]; do
     echo "Best School"
+    # Increment the counter
+    ((counter++))
+
 	if [ "$counter" -eq 9 ]
 	then
 		echo "Hi"
 	fi
     
-    # Increment the counter
-    ((counter++))
 done
