@@ -9,7 +9,7 @@ if [ -e "$passwd_file" ]; then
     # Use a while loop to read each line from the file
     while IFS=: read -r username passwd uid GID UIDI home CMD; do
         # Display the required information
-        echo "The user $username is part of the GID gang, lives in $home and rides $CMD. $uid's place is protected by the passcode $passwd, more info about the user here: $UIDI"
+        echo "The user $username is part of the $GID gang, lives in $home and rides $CMD. $uid's place is protected by the passcode $passwd, more info about the user here: $UIDI"
     done < "$passwd_file"
 else
     echo "Error: $passwd_file does not exist."
