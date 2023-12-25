@@ -145,3 +145,100 @@ This example prints a message when the interrupt signal (SIGINT) is received.
 Exercise caution when using commands that terminate processes, especially with signals like SIGKILL (`kill -9`). Forced terminations can lead to data corruption or unexpected behavior.
 
 Refer to the respective man pages (`man ps`, `man pgrep`, `man pkill`, `man kill`, `man exit`, `man trap`) for more details and options. Understanding these commands is crucial for effective process management and system administration.
+
+## BG Process manipulation & usefull concepts
+
+## `&` - Background Execution
+
+In Bash, the `&` symbol is used to run a command or a script in the background. When a command is followed by `&`, it gets executed independently, allowing the user to continue working in the terminal without waiting for the command to complete. For example:
+
+```bash
+$ long_running_command &
+```
+
+This runs `long_running_command` in the background.
+
+## `init.d` - Initialization Directory
+
+`init.d` is a directory on Unix-like systems that traditionally contains scripts to initialize and manage system services. These scripts are often used during the boot process to start, stop, and restart daemons or services. While modern systems might use alternatives like systemd, `init.d` scripts are a legacy method for managing system services.
+
+### Commands Example in `init.d`
+
+The scripts within `init.d` typically accept arguments such as `start`, `stop`, `restart`, and `status` to control the associated service. For example, consider an `init.d` script for a hypothetical service called `my_service`:
+
+```bash
+#!/bin/bash
+# /etc/init.d/my_service
+
+case "$1" in
+    start)
+        echo "Starting my_service..."
+        # Command to start the service
+        ;;
+    stop)
+        echo "Stopping my_service..."
+        # Command to stop the service
+        ;;
+    restart)
+        echo "Restarting my_service..."
+        # Command to restart the service
+        ;;
+    status)
+        echo "Checking my_service status..."
+        # Command to check the status of the service
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+        ;;
+esac
+
+exit 0
+```
+
+In this example, you could control the `my_service` daemon using commands like:
+
+```bash
+$ sudo /etc/init.d/my_service start
+$ sudo /etc/init.d/my_service stop
+$ sudo /etc/init.d/my_service restart
+$ sudo /etc/init.d/my_service status
+```
+
+Adjust the script and commands based on the specific requirements of the service you are managing.
+
+## Daemon
+
+In the context of Unix-like operating systems, a daemon is a background process that runs continuously, providing specific services or functionality. Daemons are typically initiated during system startup and operate independently of user sessions. They often have names ending in "d" to denote their daemon status.
+
+Examples include:
+- **httpd:** Apache HTTP Server daemon.
+- **sshd:** OpenSSH daemon for secure shell communication.
+- **cron:** Daemon for executing scheduled tasks using cron jobs.
+
+## Positional Parameters
+
+In Bash scripts, positional parameters refer to the variables that hold arguments passed to the script or function. They are accessed using special variables: `$1`, `$2`, ..., `$9`, representing the first, second, and so on, command-line arguments.
+
+Example script (`example_script.sh`):
+
+```bash
+#!/bin/bash
+
+echo "The first argument is: $1"
+echo "The second argument is: $2"
+```
+
+Running the script:
+
+```bash
+$ ./example_script.sh arg1 arg2
+```
+
+This would output:
+```
+The first argument is: arg1
+The second argument is: arg2
+```
+
+Beyond `$9`, you can use `${10}`, `${11}`, and so on, for arguments beyond the ninth. Additionally, `$#` represents the total number of arguments, and `$@` refers to all arguments as an array.
