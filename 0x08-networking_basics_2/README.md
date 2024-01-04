@@ -97,3 +97,61 @@ echo "John,Doe,25" | cut -d ',' -f 2
 ```
 
 In this example, `cut` is used to extract the second field (surname) from a comma-delimited text.
+  <div class="panel-body">
+    <span id="user_id" data-id="420795"></span>
+
+    <!-- Progress vs Score -->
+
+    <!-- Task Body -->
+    <p>Write a Bash script that listens on port <code>98</code> on <code>localhost</code>.</p>
+
+<p><strong>Terminal 0</strong></p>
+
+<p>Starting my script.</p>
+
+<pre><code>sylvain@ubuntu$ sudo ./100-port_listening_on_localhost
+</code></pre>
+
+<p><strong>Terminal 1</strong></p>
+
+<p>Connecting to <code>localhost</code> on port <code>98</code> using <code>telnet</code> and typing some text.</p>
+
+<pre><code>sylvain@ubuntu$ telnet localhost 98
+Trying 127.0.0.2...
+Connected to localhost.
+Escape character is &#39;^]&#39;.
+Hello world
+test
+</code></pre>
+
+<p><strong>Terminal 0</strong></p>
+
+<p>Receiving the text on the other side.</p>
+
+<pre><code>sylvain@ubuntu$ sudo ./100-port_listening_on_localhost
+Hello world
+test
+</code></pre>
+
+<p>For the sake of the exercise, this connection is made entirely within <code>localhost</code>. This isn&rsquo;t really exciting as is, but we can use this script across networks as well. Try running it between your local PC and your remote server for fun!</p>
+
+<p>As you can see, this can come in very handy in a multitude of situations. Maybe you&rsquo;re debugging socket connection issues, or you&rsquo;re trying to connect to a software and you are unsure if the issue is the software or the network, or you&rsquo;re working on firewall rules&hellip; Another tool to add to your debugging toolbox!</p>
+
+  </div>
+
+  <div class="list-group">
+    <!-- Task URLs -->
+
+    <!-- Github information -->
+      <div class="list-group-item">
+        <p><strong>Repo:</strong></p>
+        <ul>
+          <li>GitHub repository: <code>alx-system_engineering-devops</code></li>
+            <li>Directory: <code>0x08-networking_basics_2</code></li>
+            <li>File: <code>100-port_listening_on_localhost</code></li>
+        </ul>
+      </div>
+
+    <!-- Self-paced manual review -->
+  </div>
+
