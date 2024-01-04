@@ -1,2 +1,10 @@
 #!/usr/bin/env bash
-# BASH Scripts
+# BASH Scripts that sets an Ubuntu server with IP& for localhost and facebook.com
+#   Edits the content of /etc/hosts file using sed search and replace
+#   a copy of the file is created beacause of Dcker issues with the same file
+cp /etc/hosts ~/new.hosts
+sed -i /localhost$/d ~/new.hosts
+echo -e "127.0.0.2\tlocalhost" >> ~/new.hosts
+sed -i /facebook.com$/d ~/new.hosts
+echo -e "8.8.8.8\tfacebook.com" >> ~/new.hosts
+cp -f ~/new.hosts /etc/hosts
