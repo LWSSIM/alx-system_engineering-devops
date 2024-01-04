@@ -97,6 +97,8 @@ echo "John,Doe,25" | cut -d ',' -f 2
 ```
 
 In this example, `cut` is used to extract the second field (surname) from a comma-delimited text.
+---------------------------------------------------------------
+---------------------------------------------------------------
 
 ### TASK_100-port_listening_on_localhost
 
