@@ -295,7 +295,55 @@ When a user wants to access www.foobar.com, their browser sends a request to the
 
 ---
 
-## 1-distributed_web_infrastructure
+## 1-disbuted_web_infrastructuretributed_web_infrastructur
+
+**1. Three-Server Web Infrastructure for www.foobar.com:**
+
+- **Servers (3):** Three physical or virtual machines to distribute the load and provide redundancy.
+
+- **Web Server (Nginx):** Handles incoming HTTP requests, forwards dynamic requests to the application server.
+
+- **Application Server:** Executes application code, processes dynamic requests.
+
+- **Load Balancer (HAProxy):** Distributes incoming requests across multiple servers to ensure load balancing and high availability.
+
+- **Application Files:** The code base of the web application resides on each server, ensuring redundancy and load distribution.
+
+- **Database (MySQL):** Stores and manages the structured data required by the web application.
+
+**2. Specifics:**
+
+- **Additional Elements:**
+- **Two Servers:** Introducing redundancy and scalability.
+- **Load Balancer (HAProxy):** Distributes incoming requests, ensures high availability, and prevents a single point of failure.
+
+- **Load Balancer Algorithm:** Configured with a Round Robin distribution algorithm. It works by sequentially routing requests to the servers in a circular order. This helps distribute the load evenly among the servers.
+
+- **Active-Active vs. Active-Passive Setup:**
+- **Active-Active:** Both servers are actively serving requests simultaneously. In this setup, the load balancer distributes incoming traffic across all active servers.
+- **Active-Passive:** One server is actively serving requests, while the others are on standby. If the active server fails, the load balancer redirects traffic to the passive server. This setup provides redundancy but may result in underutilized resources.
+
+- **Database Primary-Replica (Master-Slave) Cluster:**
+- The Primary node (Master) accepts write operations and updates the database.
+- The Replica nodes (Slaves) replicate data from the Primary node and serve read operations.
+- This setup provides data redundancy, load balancing, and high availability.
+
+- **Difference between Primary and Replica in the Application:**
+- **Primary Node:** Handles write operations, ensuring data consistency.
+- **Replica Node:** Serves read operations, distributing the read load and enhancing overall performance.
+
+**3. Issues:**
+
+- **Single Points of Failure (SPOF):**
+- Load Balancer: If the load balancer fails, the entire system may be affected. Consider implementing redundancy or failover mechanisms.
+- Database: If the Primary node fails, the system might experience downtime. Implement measures such as automatic failover or clustering for improved reliability.
+
+- **Security Issues:**
+- No Firewall: Lack of a firewall exposes the servers and database to potential security threats. Implement a firewall to control incoming and outgoing traffic.
+- No HTTPS: Without HTTPS, data transmission is insecure. Integrate SSL/TLS certificates to encrypt data in transit.
+
+- **No Monitoring:**
+- Lack of monitoring makes it challenging to identify and address performance issues, security breaches, or hardware failures. Implement monitoring tools to ensure proactive management and rapid response to issues.
 
 
 This Readme offers some good reads for each topic, make sure to check the included links for more info.
