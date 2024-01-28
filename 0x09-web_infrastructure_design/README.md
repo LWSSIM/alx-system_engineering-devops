@@ -295,7 +295,7 @@ When a user wants to access www.foobar.com, their browser sends a request to the
 
 ---
 
-## 1-disbuted_web_infrastructuretributed_web_infrastructur
+## 1-disbuted_web_infrastructure
 
 **1. Three-Server Web Infrastructure for www.foobar.com:**
 
@@ -345,6 +345,54 @@ When a user wants to access www.foobar.com, their browser sends a request to the
 - **No Monitoring:**
 - Lack of monitoring makes it challenging to identify and address performance issues, security breaches, or hardware failures. Implement monitoring tools to ensure proactive management and rapid response to issues.
 
+---
 
+## 2-secured_and_monitored_web_infrastructure
+
+
+**1. Three-Server Secured and Monitored Web Infrastructure for www.foobar.com:**
+
+- **Servers (3):** Three physical or virtual machines to distribute the load and provide redundancy.
+
+- **Firewalls (3):** Implementing firewalls for added security to control incoming and outgoing traffic.
+
+- **SSL Certificate:** To encrypt traffic and ensure secure communication between the user's browser and the server.
+
+- **Monitoring Clients (Sumologic or other):** Deployed on each server to collect and send data to a monitoring service, ensuring proactive management.
+
+**2. Specifics:**
+
+- **Additional Elements:**
+- **Firewalls:** Add an additional layer of security by filtering and monitoring network traffic based on predetermined security rules.
+- **SSL Certificate:** Encrypts data transmitted between the user's browser and the server, ensuring privacy and preventing data interception.
+- **Monitoring Clients:** Used for tracking performance, identifying issues, and ensuring the health and availability of the infrastructure.
+
+- **Firewalls:**
+- **Purpose:** Firewalls are added to control and monitor incoming and outgoing network traffic. They act as a barrier between the servers and potential threats, enhancing security.
+
+- **Traffic Served over HTTPS:**
+- **Purpose:** HTTPS encrypts data during transit, preventing eavesdropping and ensuring the confidentiality and integrity of user data.
+
+- **Monitoring:**
+- **Purpose:** Monitoring is essential for proactive management of the infrastructure. It helps identify performance bottlenecks, security breaches, and hardware failures before they impact the system.
+
+- **Monitoring Data Collection:**
+- **Method:** Monitoring clients (Sumologic or other tools) collect data such as server performance metrics, error logs, and other relevant information. This data is sent to a central monitoring service for analysis.
+
+- **Monitoring Web Server QPS:**
+- **Procedure:** To monitor Web Server Queries Per Second (QPS), set up monitoring tools to track the number of incoming requests per second. Analyze this data to identify patterns, spikes, or anomalies in web traffic.
+
+**3. Issues:**
+
+- **Terminating SSL at Load Balancer Level:**
+- **Issue:** Terminating SSL at the load balancer level may expose decrypted data between the load balancer and the servers. For end-to-end encryption, SSL termination should occur at the application servers.
+
+- **Single MySQL Server Accepting Writes:**
+- **Issue:** Having only one MySQL server capable of accepting writes creates a single point of failure. Implement a Primary-Replica (Master-Slave) cluster to distribute the write load and enhance reliability.
+
+- **Identical Components in Servers (Database, Web Server, Application Server):**
+- **Problem:** If all servers have the same components, a failure in one component (e.g., web server) might affect all servers simultaneously. Introduce diversity in components or distribute them across different servers to minimize the risk of a single failure impacting the entire infrastructure.
+
+---
 This Readme offers some good reads for each topic, make sure to check the included links for more info.
 Happy coding!
