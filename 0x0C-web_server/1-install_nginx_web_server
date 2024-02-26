@@ -21,4 +21,4 @@ EOF'
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
 
 # Restart Nginx
-sudo -c 'kill -s HUP $(cat /var/run/nginx.pid)'
+sudo sh -c 'kill -s HUP $(cat /var/run/nginx.pid)'
