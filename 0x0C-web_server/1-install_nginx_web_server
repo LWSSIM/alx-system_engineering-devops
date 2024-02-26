@@ -6,19 +6,5 @@
 #  .it must return a page that contains the string Hello World!
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo sh -c 'cat <<EOF > /etc/nginx/sites-available/default
-server {
-  listen 80;
-  server_name localhost:
-
-  location / {
-    root /var/www/html;
-    index index.html;
-  }
-}
-EOF'
-
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
-
-# Restart Nginx
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx.html'
 sudo service nginx start
