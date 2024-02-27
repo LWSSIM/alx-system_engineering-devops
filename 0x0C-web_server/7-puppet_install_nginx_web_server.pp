@@ -14,7 +14,7 @@ file {'/var/www/html/index.html':
 }
 
 exec {'redirect_me':
-  command  => sudo sed -i  "/server_name _;/a \ \n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}" /etc/nginx/sites-available/default
+  command  => 'sed -i  "/server_name _;/a \ \n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}" /etc/nginx/sites-available/default',
   provider => 'shell'
 }
 
