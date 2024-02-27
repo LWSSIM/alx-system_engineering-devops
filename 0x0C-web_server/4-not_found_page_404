@@ -25,7 +25,7 @@ echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
 # Set 404 page
 touch /var/www/html/e_404.html
 echo -e "Ceci n'est pas une page" >> /var/www/html/e_404.html
-sudo sed -i "/server_name _;/a \ \n\terror_page 404 /e_404.html;" /var/www/html/e_404.html
+sudo sed -i "/server_name _;/a \ \n\terror_page 404 /e_404.html;" /etc/nginx/sites-available/default
 
 # Redirect
 redirect_rule="return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4"
