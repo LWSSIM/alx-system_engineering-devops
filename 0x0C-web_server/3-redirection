@@ -9,6 +9,14 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
+# Start server
+sudo service nginx start
+# allow nginx on firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Backup default index
+sudo cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
 # root display msg
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
 
@@ -17,7 +25,7 @@ redirect_rule="return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4"
 old="server_name _;"
 new="server_name _;\n\n\tlocation /redirect_me {\n\t\t$redirect_rule;\n\t}"
 
-sudo sed -i --follow-symlinks -e "s|$old|$new|" /etc/nginx/sites-enabled/default
+sudo sed -i -e "s|$old|$new|" /etc/nginx/sites-available/default
 
-# Start server
-sudo service nginx start
+# Restarting server
+sudo service nginx restart
