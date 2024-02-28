@@ -1,4 +1,4 @@
-Web stack debugging {#web-stack-debugging .d-flex .flex-column .gap-2}
+Web stack debugging
 ===================
 
 
@@ -11,7 +11,6 @@ and that is why seasoned software engineers are the best at it...
 experience. They have seen lots of broken code, buggy systems, weird
 edge cases and race conditions.
 
-![](./Concept_%20Web%20stack%20debugging%20_%20ALX%20Africa%20Intranet_files/45dffb0b1da8dc2ce47e340d7f88b05652c0f486.png)
 
 Non-exhaustive guide to debugging
 =================================

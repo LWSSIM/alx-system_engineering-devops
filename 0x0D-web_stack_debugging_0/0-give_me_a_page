@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# After connecting to the container and fixing whatever needed to be fixed,
+# you can see that curling port 80 return a page(apache) that contains Hello Holberton
+sudo apt-get update
+sudo apt-get install -y apache2
+sudo sh -c "echo 'Hello Holberton' > /var/www/html/index.html"
+sudo service apache2 start
