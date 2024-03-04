@@ -6,7 +6,7 @@
 
 <h2>Main Objectives</h2>
 
-<p>This part convers the basics of a bash shell, for beginner use cases, further reading is required to shape a deeper understanding</p>
+<p>This part covers the basics of a bash shell, for beginner use cases, further reading is required to shape a deeper understanding</p>
 
 <ul>
   <li>What is a $SHELL</li>
