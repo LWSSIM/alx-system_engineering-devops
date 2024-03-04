@@ -1,3 +1,5 @@
+![image](https://github.com/LWSSIM/alx-system_engineering-devops/assets/127129101/fefe495f-216d-42cd-93de-9dc16654c0aa)
+
 # Project README: Introduction to Load Balancing with HAProxy (RedRobin)
 
 Welcome to the Load Balancing project using HAProxy (RedRobin)! This project aims to provide you with hands-on experience and understanding of load balancing techniques, specifically utilizing HAProxy alongside NGINX on Debian/Ubuntu systems. Through this project, you will delve into the world of load balancing, web stack debugging, and gain familiarity with essential concepts such as HTTP headers.
