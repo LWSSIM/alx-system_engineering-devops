@@ -27,7 +27,7 @@ sudo sed -i "/^[[:space:]]*$loc/a \ $app" /etc/nginx/sites-available/default
 
 # Set 404 page
 touch /var/www/html/e_404.html
-echo -e "Ceci n'est pas une page" >>/var/www/html/e_404.html
+echo -e "Ceci n'est pas une page" > /var/www/html/e_404.html
 sudo sed -i "/server_name _;/a \ \n\terror_page 404 /e_404.html;" /etc/nginx/sites-available/default
 
 # Redirect
