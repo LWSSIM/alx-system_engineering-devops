@@ -1,5 +1,7 @@
 # Web Server Creation and Configuration Guide
 
+![image](https://github.com/LWSSIM/alx-system_engineering-devops/assets/127129101/16ba32b4-c121-4db7-84ba-63532b3f7d4b)
+
 ## Introduction
 Welcome to the Web Server Creation and Configuration guide! This guide aims to provide a comprehensive walkthrough for setting up and configuring a web server using Ubuntu 16.04 and Nginx. Whether you're new to server management or looking to enhance your skills, this guide will equip you with the knowledge needed to get started and understand the inner workings of a web server.
 
