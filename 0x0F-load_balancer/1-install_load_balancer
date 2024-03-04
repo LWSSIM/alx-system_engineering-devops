@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on lb-01 server.
+#   HAproxy to send traffic to web-01 and web-02
+#   Distribute requests using a *roundrobin* algorithm
+#   HAproxy can be managed via an init script
+
+# Install HAproxy
+command -v haproxy &>/dev/null
+if [ $? -ne 0 ]; then
+	sudo apt-get -y update
+	sudo apt-get -y install haproxy
+else
+	echo "skip install"
+fi
+
+# Config
+lb_conf="
+global
+  log /dev/log local0
+  log /dev/log local1 notice
+  maxconn 4096
+  user haproxy
+  group haproxy
+  daemon
+
+defaults
+  mode http
+  log global
+  mode http
+  option httplog
+  option dontlognull
+  timeout connect 5000
+  timeout client 50000
+  timeout server 50000
+ 
+
+frontend lwssim_tech_front
+  bind *:80
+  default_backend lwssim_tech_back
+
+backend lwssim_tech_back
+  balance roundrobin
+  server 420795-web-01 54.237.2.143:80 check
+  server 420795-web-02 107.21.25.233:80 check
+"
+
+echo "$lb_conf" | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
+
+# own
+sudo chmod 644 /etc/haproxy/haproxy.cfg
+
+# managed via an init script
+sudo update-rc.d haproxy defaults
+
+# Start or restart
+if [ "$(pgrep -c haproxy)" -le 0 ]; then
+	sudo service haproxy start
+else
+  sudo service haproxy restart
+fi
