@@ -13,13 +13,13 @@ file {'/var/www/html/index.html':
   content => 'Hello World!'
 }
 
-exec {'redirect_me':
-  command  => 'sed -i  "/server_name _;/a \ \n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}" /etc/nginx/sites-available/default',
+exec {'HTTP header':
+  command  => 'sed -i  "/^[[:space:]]*location \/ {/a \ \n\t\tadd_header X-Served-By \"$(hostname)\";" /etc/nginx/sites-available/default',
   provider => 'shell'
 }
 
-exec {'HTTP header':
-  command  => 'sed -i  "/^[[:space:]]*location \/ { /a \ \n\t\tadd_header X-Served-By \"$(hostname)\";" /etc/nginx/sites-available/default',
+exec {'redirect_me':
+  command  => 'sed -i  "/server_name _;/a \ \n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}" /etc/nginx/sites-available/default',
   provider => 'shell'
 }
 
