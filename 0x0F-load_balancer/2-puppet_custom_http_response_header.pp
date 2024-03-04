@@ -19,7 +19,7 @@ exec {'redirect_me':
 }
 
 exec {'HTTP header':
-  command  => 'sed -i  "/^[[:space:]]*location \/ { /a \ \n\t\tadd_header X-Served-By \"$(hostname)\";" /etc/nginx/sites-available/default'
+  command  => 'sed -i  "/^[[:space:]]*location \/ { /a \ \n\t\tadd_header X-Served-By \"$(hostname)\";" /etc/nginx/sites-available/default',
   provider => 'shell'
 }
 
