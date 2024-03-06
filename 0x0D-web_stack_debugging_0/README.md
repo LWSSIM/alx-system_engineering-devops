@@ -1,6 +1,8 @@
 Web stack debugging
 ===================
 
+![image](https://github.com/LWSSIM/alx-system_engineering-devops/assets/127129101/16e7f0b3-701c-4574-89a4-02a142fb3a69)
+
 
 Intro
 =====
