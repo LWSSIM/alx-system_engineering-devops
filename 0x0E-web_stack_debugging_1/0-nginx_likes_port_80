@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # connetcs nginx welcome response to port 80
-sudo sed -i "s/8080/80/" /etc/nginx/sites-available/default
+sudo sed -i "s/8080/80/" /etc/nginx/sites-enabeled/default
 sudo service nginx restart
