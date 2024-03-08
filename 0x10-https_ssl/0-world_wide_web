@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# We set the subdomains to correct servers
+# print format
+# The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+
+dig_print() {
+	local domain=$1
+	local sub_domain=$2
+	ip=$(dig "$sub_domain"."$domain" | grep -A1 'ANSWER SECTION:' | awk '{print $5}' | tail -1)
+	rec_type=$(dig "$sub_domain"."$domain" | grep -A1 'ANSWER SECTION:' | awk '{print $4}' | tail -1)
+	echo "The subdomain $sub_domain is a $rec_type record and points to $ip"
+}
+
+if [ $# -eq 2 ]; then
+	dig_print "$1" "$2"
+else
+	dig_print "$1" 'www'
+	dig_print "$1" 'lb-01'
+	dig_print "$1" 'web-01'
+	dig_print "$1" 'web-02'
+fi
