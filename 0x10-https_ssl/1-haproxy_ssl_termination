@@ -23,6 +23,7 @@ frontend lwssim_tech_front
   bind *:80
   bind *:443 ssl crt /etc/haproxy/certs/www.lwssim.tech.pem
   redirect scheme https unless { ssl_fc }
+  reqadd X-Forwarded-Proto:\ https
   default_backend lwssim_tech_back
 
 backend lwssim_tech_back
