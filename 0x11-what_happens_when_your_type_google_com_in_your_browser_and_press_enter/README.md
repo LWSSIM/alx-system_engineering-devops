@@ -34,7 +34,7 @@ Here, we will define some common terms that will be needed in your learning jour
 - **Connection**: This refers to a certain information exchanged (as laid out in a protocol) over a network, this comes before the data transfer.
 - **Packet**: This is the smallest unit that is sent over a connection in a network, packets carry data in pieces (important concept of TCP),
   + A packet itself is divided into a header portion, with general information about it, and a payload, the actual piece of data also called body.
-- Server: A server is a computer program or device that provides a service to another computer program and its user. (distinted from web-server)
+- Server: A server is a computer program or device that provides a service to another computer program and its user. (distinct from web-server)
 - **Protocol**: A conventional set of rules and standards (usually laid out by experts) which define the language and framework that devices use to communicate. Many protocols exist varying in efficiency, security and other areas. (we will focus of TCP/IP).
 - [**HTTP**](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/): An application layer protocol used for accessing web-content.
 - **URL**: Uniform Resource Locator, is a string of characters used to address a resource on the internet.
@@ -58,7 +58,7 @@ Hence why the browser immediately seeks to *translate* the string you typed into
 
 The popular logical solution to this whole shebang; is know by a domain name system.
 
-*A system set to resovle the domain name to an IP.*
+*A system set to resolve the domain name to an IP.*
 - Usually, It sends a DNS request to a DNS resolver, which then queries authoritative DNS servers to find the IP address associated with the domain name. Once the IP address is obtained, your computer can establish a connection to the server hosting the website.
 
 > [!NOTE]
