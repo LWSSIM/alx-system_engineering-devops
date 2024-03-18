@@ -18,3 +18,7 @@
 <h2>Writing scripts</h2>
 <p>This part will tackle the use of scripts!(All tasks will be according to this) <em>NOTE</em> That the use of git/github is mandatory.</p>
 
+<h2>Networking</h2>
+<p>From IP to netcat, while visiting ssh! Find all about networking in linux</p>
+
+<h2><a href="https://github.com/LWSSIM/alx-system_engineering-devops/tree/master/0x09-web_infrastructure_design#web-infrastructure-design">Web infrastructure design</a></h2>
