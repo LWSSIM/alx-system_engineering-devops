@@ -97,6 +97,55 @@ sudo ufw status
 | 2      | Anywhere       | Anywhere | 80/tcp  | Allow  |
 | 3      | Anywhere       | Anywhere | 21/tcp  | Deny   |
 
+## Request Forwarding using Firewalls
+
+Firewalls can also be configured to forward requests from external networks to internal servers. This is commonly known as port forwarding or destination NAT (Network Address Translation). By forwarding requests, organizations can host services such as web servers, email servers, or VPN servers behind a firewall while still allowing external users to access them.
+
+### Port Forwarding with ufw:
+
+1. **Enable Port Forwarding**:
+
+   Edit `/etc/default/ufw` and ensure `DEFAULT_FORWARD_POLICY` is set to `ACCEPT`:
+
+   ```
+   DEFAULT_FORWARD_POLICY="ACCEPT"
+   ```
+
+2. **Add Forwarding Rules**:
+
+   ```bash
+   sudo ufw route allow proto tcp from any to any port 80
+   ```
+
+   This example forwards HTTP traffic from any external IP address to an internal server listening on port 80.
+
+3. **Enable NAT (Network Address Translation)**:
+
+   ```bash
+   sudo nano /etc/ufw/sysctl.conf
+   ```
+
+   Ensure the following lines are uncommented:
+
+   ```
+   net/ipv4/ip_forward=1
+   ```
+
+   Then reload the sysctl settings:
+
+   ```bash
+   sudo sysctl -p /etc/ufw/sysctl.conf
+   ```
+
+4. **Reload ufw**:
+
+   ```bash
+   sudo ufw reload
+   ```
+
+Now, incoming requests to port 80 will be forwarded to the internal server as configured. Ensure proper firewall rules are in place to restrict access as needed and prevent unauthorized access to internal services.
+
+
 ## Conclusion
 
 Firewalls are critical components of network security, and ufw provides a simple yet powerful interface for managing firewall rules on Linux systems. Understanding firewall concepts and using tools like ufw effectively can significantly enhance the security posture of your network.
