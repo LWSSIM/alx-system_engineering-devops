@@ -43,13 +43,13 @@ Here's a breakdown of a typical URL:
   `:
 
   | component  | meaning   | example   |
-   |-------------- | -------------- | -------------- |
-   | Protocol    | Indicates the communication protocol being used.     | HTTPS     |
-   | DomainName or IP    | Identifies the location of the resource, either by domain name or by IP address    | www.google.com     |
-   | Path    | Specifies the location of the specific resource on the server's filesystem.     | / (root)     |
-   | Query Parameters     | Optional parameters that are appended to the URL and are typically used to pass information to the server.     | q=search_key     |
-   | Fragment Identifier    |  Optional section that specifies a specific section or part of the resource being referenced     | section5      |
-  
+  |-------------- | -------------- | -------------- |
+  | Protocol    | Indicates the communication protocol being used.     | HTTPS     |
+  | DomainName or IP    | Identifies the location of the resource, either by domain name or by IP address    | www.google.com     |
+  | Path    | Specifies the location of the specific resource on the server's filesystem.     | / (root)     |
+  | Query Parameters     | Optional parameters that are appended to the URL and are typically used to pass information to the server.     | q=search_key     |
+  | Fragment Identifier    |  Optional section that specifies a specific section or part of the resource being referenced     | section5      |
+
 
 ## DNS
 
