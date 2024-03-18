@@ -1,0 +1,3 @@
+sudo ufw app list
+sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx Full'
