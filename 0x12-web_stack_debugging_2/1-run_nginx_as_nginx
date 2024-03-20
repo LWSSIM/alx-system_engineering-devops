@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Fix for a web-server running on a different port than 8080 and not using nginx
 
-sudo pkill apache2
+pkill apache2
 sed -i 's/80/8080/g' /etc/nginx/sites-available/default
 sed -i '1s/^/user nginx;\n/' /etc/nginx/nginx.conf
 chmod 644 /etc/nginx/nginx.conf
 
-sedo service nginx restart
+sudo -u nginx service nginx restart
