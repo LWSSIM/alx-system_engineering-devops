@@ -12,6 +12,8 @@ sudo wget -O mysql57 https://raw.githubusercontent.com/nuuxcode/alx-system_engin
 ```
 I used bionic for this project.
 
+If you have problems installing, follow this [guide](https://www.devart.com/dbforge/mysql/how-to-install-mysql-on-ubuntu/)
+
 ### What is the main role of a database?
 
 A database serves as a centralized repository for storing, organizing, and managing data. It provides mechanisms for data retrieval, insertion, deletion, and modification, enabling applications to interact with structured data efficiently.
