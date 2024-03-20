@@ -3,6 +3,14 @@
 **Introduction**
 
 In this project, we'll be setting up a MySQL database slave-master replica system on two web servers. This setup is commonly used in production environments to improve database performance, reliability, and redundancy.
+![image](https://github.com/LWSSIM/alx-system_engineering-devops/assets/127129101/47d493d8-086e-473d-8b07-799240ddb0f6)
+
+### Installing mysql -5.7 on the web-servers
+
+```bash
+sudo wget -O mysql57 https://raw.githubusercontent.com/nuuxcode/alx-system_engineering-devops/master/scripts/mysql57 && sudo chmod +x mysql57 &&  sudo ./mysql57
+```
+I used bionic for this project.
 
 ### What is the main role of a database?
 
