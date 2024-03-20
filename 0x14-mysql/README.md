@@ -3,6 +3,16 @@
 **Introduction**
 
 In this project, we'll be setting up a MySQL database slave-master replica system on two web servers. This setup is commonly used in production environments to improve database performance, reliability, and redundancy.
+![image](https://github.com/LWSSIM/alx-system_engineering-devops/assets/127129101/47d493d8-086e-473d-8b07-799240ddb0f6)
+
+### Installing mysql -5.7 on the web-servers
+
+```bash
+sudo wget -O mysql57 https://raw.githubusercontent.com/nuuxcode/alx-system_engineering-devops/master/scripts/mysql57 && sudo chmod +x mysql57 &&  sudo ./mysql57
+```
+I used bionic for this project.
+
+If you have problems installing, follow this [guide](https://www.devart.com/dbforge/mysql/how-to-install-mysql-on-ubuntu/)
 
 ### What is the main role of a database?
 
@@ -54,8 +64,54 @@ Regularly testing database backups is crucial to ensure their reliability and ef
 mysql -u username -p database_name < backup.sql
 ```
 
+## Tasks
+
+### 0
+
+Follow instalation guide.
+(add checker public key in web-02 for ssh access)
+
+### 1
+
+Configure sql for both servers to allow checker access, with the following:
+Use a scprit or enter manually in `mysql`
+
+```sql
+CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
+
+FLUSH PRIVILEGES;
+```
+TEST:
+
+```bash
+mysql -uholberton_user -p -e "use tyrell_corp; select * from nexus6"
+```
+
+### 2
+
+Create a minimum of 1 tables to configure replication;
+
+```sql
+CREATE DATABASE tyrell_corp;
+
+USE tyrell_corp;
+
+CREATE TABLE nexus6 (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50));
+
+INSERT INTO nexus6 (name) VALUES (Leon);
+
+GRANT SELECT ON tyrell_corp.* TO 'holberton_user'@'localhost';
+```
+TEST:
+```bash
+mysql -uholberton_user -p -e "use tyrell_corp; select * from nexus6"
+```
+
+### 3
+
+
 ### Conclusion
 
 Setting up a MySQL database slave-master replica system enhances database reliability, availability, and disaster recovery capabilities. By understanding the role of databases, the purpose of replicas, the importance of backup storage locations, and the need for regular backup testing, we can ensure the integrity and continuity of our data infrastructure.
-
-For step-by-step instructions on setting up the MySQL database slave-master replica system, please refer to the accompanying documentation or README.md file in the project repository.
