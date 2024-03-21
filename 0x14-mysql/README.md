@@ -71,10 +71,15 @@ mysql -u username -p database_name < backup.sql
 Follow instalation guide.
 (add checker public key in web-02 for ssh access)
 
+TEST:
+```bash
+mysql --version
+```
+
 ### 1
 
 Configure sql for both servers to allow checker access, with the following:
-Use a scprit or enter manually in `mysql`
+Use a script or enter manually in `mysql`
 
 ```sql
 CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
@@ -111,6 +116,22 @@ mysql -uholberton_user -p -e "use tyrell_corp; select * from nexus6"
 
 ### 3
 
+On web-01 create a new user for the replica server, and grant the right persmissions to the user.
+```sql
+CREATE USER 'replica_user'@'%' IDENTIFIED BY 'password';
+
+GRANT REPLICATION SLAVE ON . TO 'replica_user'@'%';
+
+GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost';
+```
+> [!NOTE]
+> holberton_user will need SELECT privileges on the mysql.user table in order to check that replica_user was created with the correct permissions.
+
+
+Test:
+```bash
+mysql -uholberton_user -p -e 'SELECT user, Repl_slave_priv FROM mysql.user'
+```
 
 ### Conclusion
 
