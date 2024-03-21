@@ -133,6 +133,54 @@ Test:
 mysql -uholberton_user -p -e 'SELECT user, Repl_slave_priv FROM mysql.user'
 ```
 
+### 4
+
+In this task, we will configure the primary server to replicate to the replica server.
+
+First, we need to set up the firewall rules on both servers to allow MySQL traffic.
+```bash
+sudo ufw allow 3306/tcp
+
+sudo ufw reload
+```
+
+
+In my.cnf file on web-01, add the following lines to configure the server as a primary server:
+```bash
+server-id       = 1
+# MySQL's Binary Log File
+log_bin         = /var/log/mysql/mysql-bin.log
+# Database we want to replicate
+binlog_do_db    = tyrell_corp
+```
+In my.cnf file on web-02, add the following lines to configure the server as a replica server:
+```bash
+# Distinguish servers in a replication setup
+server-id       = 2
+# MySQL's Binary Log File
+log_bin         = /var/log/mysql/mysql-bin.log
+# Database we want to replicate
+binlog_do_db    = tyrell_corp
+# Defines the location of the replica's relay log
+relay-log       = /var/log/mysql/mysql-relay-bin.log
+```
+Next, restart the MySQL service on both servers to apply the changes.
+```bash
+sudo service mysql restart
+```
+
+You can check the status of the MySQL service on web-01 and web-02 to ensure that it is running.
+```bash
+# in Web-01 mysql
+SHOW MASTER STATUS;
+
+# in Web-02 mysql
+# set the proper values in the following command and run it in Web-02 mysql
+CHANGE MASTER TO MASTER_HOST='master_ip', MASTER_USER='replica_user', MASTER_PASSWORD='password', MASTER_LOG_FILE='mysql-bin.0000xx', MASTER_LOG_POS=INTEGER;
+
+SHOW SLAVE STATUS\G
+```
+
 ### Conclusion
 
 Setting up a MySQL database slave-master replica system enhances database reliability, availability, and disaster recovery capabilities. By understanding the role of databases, the purpose of replicas, the importance of backup storage locations, and the need for regular backup testing, we can ensure the integrity and continuity of our data infrastructure.
