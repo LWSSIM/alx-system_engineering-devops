@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """ Gather data from an API
 addition to the first task, export data in the CSV format.
+("USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE")
+    > output File name is USER_ID.csv
 """
 
 
+import csv
 import requests
 import sys
-import csv
 
 
 if __name__ == '__main__':
@@ -29,7 +31,7 @@ if __name__ == '__main__':
         user_id = user.get('id')
         if user_id != int(id):
             continue
-        name = user.get('name')
+        username = user.get('username')
         request = requests.get(
             'https://jsonplaceholder.typicode.com/todos?userId={}'
             .format(user_id)
@@ -42,5 +44,6 @@ if __name__ == '__main__':
             writer = csv.writer(file, quoting=csv.QUOTE_ALL)
             for task in todos:
                 writer.writerow(
-                    [user_id, name, task.get('completed'), task.get('title')]
+                    [user_id, username, task.get('completed'),
+                     task.get('title')]
                 )
