@@ -36,7 +36,6 @@ Here, we will define some common terms that will be needed in your learning jour
   + A packet itself is divided into a header portion, with general information about it, and a payload, the actual piece of data also called body.
 - Server: A server is a computer program or device that provides a service to another computer program and its user. (distinct from web-server)
 - **Protocol**: A conventional set of rules and standards (usually laid out by experts) which define the language and framework that devices use to communicate. Many protocols exist varying in efficiency, security and other areas. (we will focus of TCP/IP).
-- [**HTTP**](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/): An application layer protocol used for accessing web-content.
 - **URL**: Uniform Resource Locator, is a string of characters used to address a resource on the internet.
 Here's a breakdown of a typical URL:
   + `protocol://domain-name-or-ip-address/path/to/resource?query_parameters#fragment_identifier
@@ -50,6 +49,16 @@ Here's a breakdown of a typical URL:
   | Query Parameters     | Optional parameters that are appended to the URL and are typically used to pass information to the server.     | q=search_key     |
   | Fragment Identifier    |  Optional section that specifies a specific section or part of the resource being referenced     | section5      |
 
+- [**HTTP**](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/): An application layer protocol used for accessing web-content.
+  + Differing HTTP methods can be used on any endpoint which map to application create, read, update, and delete (CRUD) operations:
+  
+  | HTTP Method  | CRUD  | Description  |
+  |-------------- | -------------- | -------------- |
+  | GET    | Read    | Retrieve data from the server  |
+  | POST or PATCH    | Create    | Send data to the server to create a new resource(record)  |
+  | PUT    | Update    | Update data on the server  |
+  | DELETE    | Delete    | Remove data from the server  |
+ 
 
 ## DNS
 
