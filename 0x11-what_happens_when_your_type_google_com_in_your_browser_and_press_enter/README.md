@@ -51,7 +51,7 @@ Here's a breakdown of a typical URL:
 
 - [**HTTP**](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/): An application layer protocol used for accessing web-content.
   + Differing HTTP methods can be used on any endpoint which map to application create, read, update, and delete (CRUD) operations:
-  
+
   | HTTP Method  | CRUD  | Description  |
   |-------------- | -------------- | -------------- |
   | GET    | Read    | Retrieve data from the server  |
