@@ -1,0 +1,56 @@
+# nginx configuration file
+
+# proxy requests to the app server on 5000
+upstream app_server_wsgiapp {
+  server localhost:5000 fail_timeout=0;
+}
+
+
+# the main web-01 server block listening on port 80
+# note: SSL is handled by the reverse proxy load balancer(HAProxy)
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+
+        # root directory
+        root /var/www/html;
+
+        index index.html index.htm index.nginx-debian.html my_index.html;
+
+        server_name _;
+
+        # serve app server gunicorn
+        location /airbnb-onepage/ {
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+
+                if (!-f $request_filename) {
+                  proxy_pass http://app_server_wsgiapp;
+                  break;
+                }
+        }
+
+
+        # serve static files
+        location /hbnb_static/ {
+                alias /data/web_static/current/;
+        }
+
+
+        # redirect to youtube example
+        location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=KTiiwdaL7ac;
+        }
+
+        # redirect to 404 page
+        error_page 404 /e_404.html;
+
+        # add headers for debugging
+        location / {
+
+                add_header X-Served-By "420795-web-01";
+                try_files $uri $uri/ =404;
+        }
+}
