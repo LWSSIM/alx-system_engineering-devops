@@ -1,0 +1,88 @@
+# nginx configuration file
+
+# proxy requests to the app server on 5000
+upstream app_server_wsgiapp {
+  server localhost:5000 fail_timeout=0;
+}
+
+
+# the main web-01 server block listening on port 80
+# note: SSL is handled by the reverse proxy load balancer(HAProxy)
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+
+        # root directory
+        root /var/www/html;
+
+        index index.html index.htm index.nginx-debian.html my_index.html;
+
+        server_name _;
+
+
+
+        # dynamic proxy for the web-dyn add headers for debugging
+        location / {
+                proxy_pass http://localhost:5003/2-hbnb;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_redirect off;
+
+                add_header X-Served-By "420795-web-01";
+                try_files $uri $uri/ =404;
+        }
+
+        location /static/ {
+                alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static/;
+        }
+
+        # dynamic proxy for api
+        location /api/ {
+                proxy_pass http://localhost:5002/api/;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_redirect off;
+        }
+
+        # dynamic route for number_odd_or_even
+        location /airbnb-dynamic/number_odd_or_even {
+                proxy_pass http://localhost:5001/number_odd_or_even;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # serve app server gunicorn
+        location /airbnb-onepage/ {
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+
+                if (!-f $request_filename) {
+                  proxy_pass http://app_server_wsgiapp;
+                  break;
+                }
+        }
+
+
+        # serve static files
+        location /hbnb_static/ {
+                alias /data/web_static/current/;
+        }
+
+
+        # redirect to youtube example
+        location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=KTiiwdaL7ac;
+        }
+
+        # redirect to 404 page
+        error_page 404 /e_404.html;
+
+}
