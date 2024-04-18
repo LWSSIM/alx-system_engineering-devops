@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Reload gunicorn service after code changes
 
-gunicorn_instance=$(ps auxf | pgrep gunicorn | head -n 1)
+gunicorn_instance=$(pgrep gunicorn | head -1)
 kill -HUP "$gunicorn_instance"
