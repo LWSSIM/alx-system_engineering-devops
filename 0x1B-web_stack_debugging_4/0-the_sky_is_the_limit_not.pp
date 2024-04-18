@@ -5,11 +5,11 @@ file { '/etc/default/nginx':
   ensure  => file,
 }
 
-exec { 'ulimit increase':}
-  command => "sed -i 's/^ULIMIT=.*/ULIMIT=\"n 10000\"/' /etc/default/nginx",
+exec { 'ulimit increase':
+  command  => "sed -i 's/^ULIMIT=.*/ULIMIT=\"n 10000\"/' /etc/default/nginx",
   provider => 'shell',
-  require => File['/etc/default/nginx'],  # Ensure the package is installed after the file is created
-  notify  => Service['nginx'],  # Notify the NGINX service when the file changes
+  require  => File['/etc/default/nginx'],  # Ensure the package is installed after the file is created
+  notify   => Service['nginx'],  # Notify the NGINX service when the file changes
 }
 
 # Manage the NGINX service
