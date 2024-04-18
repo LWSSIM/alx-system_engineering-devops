@@ -2,4 +2,4 @@
 # Reload gunicorn service after code changes
 
 gunicorn_instance=$(pgrep gunicorn | head -n 1)
-kill -HUP "$gunicorn_instance" && echo "Gunicorn reloaded" || echo "Gunicorn not reloaded"
+kill -HUP "$gunicorn_instance"
