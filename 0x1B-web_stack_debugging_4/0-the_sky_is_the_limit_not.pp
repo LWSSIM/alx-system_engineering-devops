@@ -5,6 +5,7 @@ file { '/etc/default/nginx':
   ensure  => file,
 }
 
+# Set the ulimit in the /etc/default/nginx file
 exec { 'ulimit increase':
   command  => "sed -i 's/^ULIMIT=.*/ULIMIT=\"n 10000\"/' /etc/default/nginx",
   provider => 'shell',
