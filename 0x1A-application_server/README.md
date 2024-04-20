@@ -2,6 +2,9 @@
 
 - **This project's goal is to deploy a Flask web application [AirBnB_clone] using Gunicorn on a Linux server, running Nginx web-server. Thus implementing a web application that can be accessed over the internet.**
 
+![image](https://github.com/LWSSIM/alx-system_engineering-devops/assets/127129101/41c7dc63-51b1-43cc-b0ed-7e3b0e342f96)
+
+
 This README.md provides a step-by-step guide to deploying a Flask web application using Gunicorn on a Linux server. We'll cover all aspects of the deployment process, including setting up the server, installing dependencies, configuring Gunicorn, and managing the deployment.
 
 ## Prerequisites
